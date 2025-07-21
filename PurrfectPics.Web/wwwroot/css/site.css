@@ -20,3 +20,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.vote-controls {
+    user-select: none;
+}
+
+.vote-score {
+    min-width: 20px;
+    text-align: center;
+}
