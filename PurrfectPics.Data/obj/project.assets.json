@@ -2987,11 +2987,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Data\\PurrfectPics.Data.csproj",
+      "projectUniqueName": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\PurrfectPics.Data.csproj",
       "projectName": "PurrfectPics.Data",
-      "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Data\\PurrfectPics.Data.csproj",
+      "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\PurrfectPics.Data.csproj",
       "packagesPath": "C:\\Users\\viki1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Data\\obj\\",
+      "outputPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

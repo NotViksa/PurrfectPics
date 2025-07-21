@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Web\\PurrfectPics.Web.csproj": {}
+    "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\PurrfectPics.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Data\\PurrfectPics.Data.csproj": {
+    "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\PurrfectPics.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Data\\PurrfectPics.Data.csproj",
+        "projectUniqueName": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\PurrfectPics.Data.csproj",
         "projectName": "PurrfectPics.Data",
-        "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Data\\PurrfectPics.Data.csproj",
+        "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\PurrfectPics.Data.csproj",
         "packagesPath": "C:\\Users\\viki1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Data\\obj\\",
+        "outputPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -84,14 +84,14 @@
         }
       }
     },
-    "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Services\\PurrfectPics.Services.csproj": {
+    "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\PurrfectPics.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Services\\PurrfectPics.Services.csproj",
+        "projectUniqueName": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\PurrfectPics.Services.csproj",
         "projectName": "PurrfectPics.Services",
-        "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Services\\PurrfectPics.Services.csproj",
+        "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\PurrfectPics.Services.csproj",
         "packagesPath": "C:\\Users\\viki1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Services\\obj\\",
+        "outputPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -113,8 +113,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Data\\PurrfectPics.Data.csproj": {
-                "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Data\\PurrfectPics.Data.csproj"
+              "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\PurrfectPics.Data.csproj": {
+                "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\PurrfectPics.Data.csproj"
               }
             }
           }
@@ -154,14 +154,14 @@
         }
       }
     },
-    "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Web\\PurrfectPics.Web.csproj": {
+    "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\PurrfectPics.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Web\\PurrfectPics.Web.csproj",
+        "projectUniqueName": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\PurrfectPics.Web.csproj",
         "projectName": "PurrfectPics.Web",
-        "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Web\\PurrfectPics.Web.csproj",
+        "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\PurrfectPics.Web.csproj",
         "packagesPath": "C:\\Users\\viki1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Web\\obj\\",
+        "outputPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -183,8 +183,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Services\\PurrfectPics.Services.csproj": {
-                "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Services\\PurrfectPics.Services.csproj"
+              "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\PurrfectPics.Services.csproj": {
+                "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\PurrfectPics.Services.csproj"
               }
             }
           }

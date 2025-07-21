@@ -3005,11 +3005,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Services\\PurrfectPics.Services.csproj",
+      "projectUniqueName": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\PurrfectPics.Services.csproj",
       "projectName": "PurrfectPics.Services",
-      "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Services\\PurrfectPics.Services.csproj",
+      "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\PurrfectPics.Services.csproj",
       "packagesPath": "C:\\Users\\viki1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Services\\obj\\",
+      "outputPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3031,8 +3031,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Data\\PurrfectPics.Data.csproj": {
-              "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Data\\PurrfectPics.Data.csproj"
+            "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\PurrfectPics.Data.csproj": {
+              "projectPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\PurrfectPics.Data.csproj"
             }
           }
         }

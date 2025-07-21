@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l37011pV8Wo=",
+  "dgSpecHash": "NCL4fUhehTY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\viki1\\Desktop\\purrfectpics_backup\\PurrfectPics.Web\\PurrfectPics.Web.csproj",
+  "projectFilePath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\PurrfectPics.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\viki1\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\viki1\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
