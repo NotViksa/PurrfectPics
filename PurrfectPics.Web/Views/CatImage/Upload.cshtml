@@ -1,0 +1,42 @@
+﻿@model PurrfectPics.Data.Models.CatImage
+@{
+    ViewData["Title"] = "Upload Cat Image";
+}
+
+<h2>Upload New Cat Image</h2>
+
+<form asp-action="Upload" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="control-label">Image File</label>
+        <input type="file" name="imageFile" class="form-control" accept=".jpg,.jpeg,.png,.gif" required />
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="control-label">Tags (comma separated)</label>
+        <input type="text" name="tags" class="form-control" placeholder="cute,tabby,orange" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Upload" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

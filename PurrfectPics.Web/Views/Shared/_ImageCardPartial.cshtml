@@ -1,0 +1,61 @@
+﻿@model PurrfectPics.Data.Models.CatImage
+@inject PurrfectPics.Services.Interfaces.IFavoriteService FavoriteService
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    var isFavorited = false;
+    if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+    {
+        var userId = HttpContextAccessor.HttpContext.User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
+        isFavorited = await FavoriteService.IsFavoritedAsync(userId, Model.Id);
+    }
+}
+
+<div class="card">
+    <a asp-controller="CatImage" asp-action="Details" asp-route-id="@Model.Id">
+        <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Title">
+    </a>
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <div class="d-flex flex-wrap">
+            @foreach (var tag in Model.Tags.Take(3))
+            {
+                <a asp-controller="CatImage" asp-action="Tag" asp-route-tagName="@tag.Name"
+                   class="badge bg-secondary me-1 mb-1">@tag.Name</a>
+            }
+        </div>
+    </div>
+    @if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+    {
+        <div class="card-footer bg-transparent">
+            <form asp-controller="CatImage" asp-action="ToggleFavorite" asp-route-imageId="@Model.Id"
+                  method="post" class="favorite-form">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-sm @(isFavorited ? "btn-danger" : "btn-outline-secondary")">
+                    <i class="bi @(isFavorited ? "bi-heart-fill" : "bi-heart")"></i> Favorite
+                </button>
+            </form>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('.favorite-form').submit(function(e) {
+                e.preventDefault();
+                var form = $(this);
+                $.ajax({
+                    url: form.attr('action'),
+                    type: 'POST',
+                    data: form.serialize(),
+                    success: function(data) {
+                        var btn = form.find('button');
+                        btn.toggleClass('btn-danger btn-outline-secondary');
+                        btn.find('i').toggleClass('bi-heart-fill bi-heart');
+                    }
+                });
+            });
+        });
+    </script>
+}
