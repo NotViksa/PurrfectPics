@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PurrfectPics.Data.Models;
-using PurrfectPics.Services;
 using PurrfectPics.Services.Interfaces;
 using System.Security.Claims;
 
@@ -12,13 +11,18 @@ namespace PurrfectPics.Web.Controllers
         private readonly ICatImageService _catImageService;
         private readonly ITagService _tagService;
         private readonly IFavoriteService _favoriteService;
+        private readonly IVoteService _voteService;
 
         public CatImageController(
             ICatImageService catImageService,
-            ITagService tagService)
+            ITagService tagService,
+            IFavoriteService favoriteService,
+            IVoteService voteService)
         {
             _catImageService = catImageService;
             _tagService = tagService;
+            _favoriteService = favoriteService;
+            _voteService = voteService;
         }
 
         [HttpGet]
@@ -68,7 +72,7 @@ namespace PurrfectPics.Web.Controllers
                 image.ImageUrl = $"/uploads/{uniqueFileName}";
             }
 
-            image.UploadedById = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            image.UploadedById = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var tagList = tags?.Split(',', StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>();
 
             await _catImageService.AddImageAsync(image, tagList);
@@ -89,6 +93,32 @@ namespace PurrfectPics.Web.Controllers
             }
 
             return RedirectToAction("Details", new { id = imageId });
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SubmitVote(int imageId, bool isUpvote)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var (success, score) = await _voteService.SubmitVoteAsync(userId, imageId, isUpvote);
+
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Json(new { success, score });
+            }
+
+            return RedirectToAction("Details", new { id = imageId });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetVoteInfo(int imageId)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userVote = await _voteService.GetUserVoteAsync(userId, imageId);
+            var score = await _voteService.GetImageScoreAsync(imageId);
+
+            return Json(new { userVote, score });
         }
     }
 }
