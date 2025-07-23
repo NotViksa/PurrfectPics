@@ -25,7 +25,7 @@ namespace PurrfectPics.Services
 
         public async Task<CatImage?> GetImageByIdAsync(int id)
         {
-            return await _catImageRepository.GetByIdAsync(id);
+            return await _catImageRepository.GetByIdWithDetailsAsync(id);
         }
 
         public async Task<IEnumerable<CatImage>> GetImagesByTagAsync(string tagName)

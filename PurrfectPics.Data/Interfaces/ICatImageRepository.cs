@@ -8,5 +8,6 @@ namespace PurrfectPics.Data.Interfaces
         Task<IEnumerable<CatImage>> GetByUserAsync(string userId);
         Task<IEnumerable<CatImage>> GetMostPopularAsync(int count);
         Task<IEnumerable<CatImage>> GetRecentAsync(int count);
+        Task<CatImage?> GetByIdWithDetailsAsync(int id);
     }
 }

@@ -43,5 +43,13 @@ namespace PurrfectPics.Data.Repositories
                 .Take(count)
                 .ToListAsync();
         }
+
+        public async Task<CatImage?> GetByIdWithDetailsAsync(int id)
+        {
+            return await _context.CatImages
+                .Include(ci => ci.UploadedBy)
+                .Include(ci => ci.Tags)
+                .FirstOrDefaultAsync(ci => ci.Id == id);
+        }
     }
 }
