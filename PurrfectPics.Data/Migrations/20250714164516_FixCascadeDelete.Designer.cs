@@ -12,7 +12,7 @@ using PurrfectPics.Data;
 namespace PurrfectPics.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250714164516_FixCascadeDelete")]
+    [Migration("20250714164516_FixCascade")]
     partial class FixCascadeDelete
     {
         /// <inheritdoc />

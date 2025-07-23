@@ -77,5 +77,22 @@ namespace PurrfectPics.Services
         {
             await _catImageRepository.UpdateAsync(vote.CatImage);
         }
+
+        public async Task<bool> DeleteImageAsync(int id)
+        {
+            try
+            {
+                var image = await _catImageRepository.GetByIdAsync(id);
+                if (image == null) return false;
+
+                await _catImageRepository.DeleteAsync(id);
+                return true;
+            }
+            catch
+            {
+                // Log error here if needed
+                return false;
+            }
+        }
     }
 }

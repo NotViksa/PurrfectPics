@@ -199,5 +199,32 @@ namespace PurrfectPics.Web.Controllers
                 return Json(new { error = "An error occurred" });
             }
         }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var image = await _catImageService.GetImageByIdAsync(id);
+            if (image == null)
+            {
+                return NotFound();
+            }
+
+            // Check if current user is owner or admin
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (image.UploadedById != currentUserId && !User.IsInRole("Administrator"))
+            {
+                return Forbid();
+            }
+
+            var success = await _catImageService.DeleteImageAsync(id);
+            if (!success)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

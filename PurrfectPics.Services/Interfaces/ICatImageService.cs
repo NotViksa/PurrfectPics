@@ -14,5 +14,6 @@ namespace PurrfectPics.Services.Interfaces
         Task AddCommentAsync(Comment comment);
         Task AddFavoriteAsync(Favorite favorite);
         Task AddVoteAsync(Vote vote);
+        Task<bool> DeleteImageAsync(int id);
     }
 }
