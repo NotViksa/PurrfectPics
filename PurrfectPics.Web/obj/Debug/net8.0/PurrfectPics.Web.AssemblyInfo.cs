@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PurrfectPics.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58661c0de53429a54e9959d8bee7939468cdb9d6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b949980a5eb0af17c1c1aebf5c3ab50642d9e230")]
 [assembly: System.Reflection.AssemblyProductAttribute("PurrfectPics.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PurrfectPics.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
