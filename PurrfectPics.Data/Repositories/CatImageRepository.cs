@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PurrfectPics.Data.Interfaces;
 using PurrfectPics.Data.Models;
+using System.Linq.Expressions;
 
 namespace PurrfectPics.Data.Repositories
 {
@@ -50,6 +51,10 @@ namespace PurrfectPics.Data.Repositories
                 .Include(ci => ci.UploadedBy)
                 .Include(ci => ci.Tags)
                 .FirstOrDefaultAsync(ci => ci.Id == id);
+        }
+        public async Task<int> CountAsync(Expression<Func<CatImage, bool>> predicate)
+        {
+            return await _context.CatImages.CountAsync(predicate);
         }
     }
 }

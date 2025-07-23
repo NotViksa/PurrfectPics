@@ -94,5 +94,9 @@ namespace PurrfectPics.Services
                 return false;
             }
         }
+        public async Task<int> GetImageCountByUserAsync(string userId)
+        {
+            return await _catImageRepository.CountAsync(ci => ci.UploadedById == userId);
+        }
     }
 }

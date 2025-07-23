@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PurrfectPics.Services.Interfaces;
+using System.Security.Claims;
 
 namespace PurrfectPics.Web.Controllers
 {
@@ -7,17 +9,28 @@ namespace PurrfectPics.Web.Controllers
     {
         private readonly ICatImageService _catImageService;
         private readonly ITagService _tagService;
+        private readonly IFavoriteService _favoriteService;
+        private readonly ICommentService _commentService;
 
         public HomeController(
             ICatImageService catImageService,
-            ITagService tagService)
+            ITagService tagService,
+            IFavoriteService favoriteService,
+            ICommentService commentService)
         {
             _catImageService = catImageService;
             _tagService = tagService;
+            _favoriteService = favoriteService;
+            _commentService = commentService;
         }
 
         public async Task<IActionResult> Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Dashboard");
+            }
+
             var recentImages = await _catImageService.GetRecentImagesAsync(12);
             var popularTags = await _tagService.GetPopularTagsAsync(10);
 
@@ -27,6 +40,18 @@ namespace PurrfectPics.Web.Controllers
 
         public IActionResult About()
         {
+            return View();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Dashboard()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            ViewBag.UploadCount = await _catImageService.GetImageCountByUserAsync(userId);
+            ViewBag.FavoriteCount = await _favoriteService.GetFavoriteCountByUserAsync(userId);
+            ViewBag.CommentCount = 0;
+
             return View();
         }
     }

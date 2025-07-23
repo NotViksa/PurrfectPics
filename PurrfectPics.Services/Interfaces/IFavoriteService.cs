@@ -7,5 +7,6 @@ namespace PurrfectPics.Services.Interfaces
         Task<bool> ToggleFavoriteAsync(string userId, int imageId);
         Task<bool> IsFavoritedAsync(string userId, int imageId);
         Task<IEnumerable<CatImage>> GetUserFavoritesAsync(string userId);
+        Task<int> GetFavoriteCountByUserAsync(string userId);
     }
 }

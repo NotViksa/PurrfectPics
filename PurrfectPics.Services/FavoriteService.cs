@@ -53,5 +53,9 @@ namespace PurrfectPics.Services
                 .Select(f => f.CatImage)
                 .ToListAsync();
         }
+        public async Task<int> GetFavoriteCountByUserAsync(string userId)
+        {
+            return await _context.Favorites.CountAsync(f => f.UserId == userId);
+        }
     }
 }

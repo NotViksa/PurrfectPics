@@ -34,6 +34,7 @@ builder.Services.AddScoped<ICatImageService, CatImageService>();
 builder.Services.AddScoped<ITagService, TagService>();
 builder.Services.AddScoped<IFavoriteService, FavoriteService>();
 builder.Services.AddScoped<IVoteService, VoteService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
 
 // Configure Identity to use our custom ApplicationUser
 builder.Services.AddDefaultIdentity<ApplicationUser>(options =>

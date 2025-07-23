@@ -1,4 +1,5 @@
 ﻿using PurrfectPics.Data.Models;
+using System.Linq.Expressions;
 
 namespace PurrfectPics.Data.Interfaces
 {
@@ -9,5 +10,6 @@ namespace PurrfectPics.Data.Interfaces
         Task<IEnumerable<CatImage>> GetMostPopularAsync(int count);
         Task<IEnumerable<CatImage>> GetRecentAsync(int count);
         Task<CatImage?> GetByIdWithDetailsAsync(int id);
+        Task<int> CountAsync(Expression<Func<CatImage, bool>> predicate);
     }
 }

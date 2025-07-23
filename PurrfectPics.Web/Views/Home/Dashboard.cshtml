@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+    <h1>Welcome back, @User.Identity.Name!</h1>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Your Stats</h5>
+                    <p class="card-text">
+                        Uploads: @ViewBag.UploadCount<br>
+                        Favorites: @ViewBag.FavoriteCount<br>
+                        Comments: @ViewBag.CommentCount
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <h3>Recent Activity</h3>
+            <!-- Add recent activity feed here -->
+        </div>
+    </div>
+</div>

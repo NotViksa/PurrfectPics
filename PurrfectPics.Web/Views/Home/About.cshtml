@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "About PurrfectPics";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1 class="display-4 text-center mb-4">About PurrfectPics</h1>
+            <div class="card shadow">
+                <div class="card-body">
+                    <p class="lead">Welcome to the cutest cat picture sharing platform!</p>
+                    <p>PurrfectPics is a community-driven platform where cat lovers can share, vote, and comment on adorable cat pictures.</p>
+                    <p>Features include:</p>
+                    <ul>
+                        <li>Upload and share your favorite cat photos</li>
+                        <li>Tag images for easy discovery</li>
+                        <li>Vote on your favorite images</li>
+                        <li>Save favorites to your profile</li>
+                    </ul>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <div class="text-center mt-4">
+                            <a asp-controller="Account" asp-action="Register" class="btn btn-primary me-2">Join Now</a>
+                            <a asp-controller="Account" asp-action="Login" class="btn btn-outline-secondary">Sign In</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
