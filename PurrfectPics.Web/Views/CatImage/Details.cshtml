@@ -1,0 +1,93 @@
+﻿@model PurrfectPics.Data.Models.CatImage
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <img src="@Model.ImageUrl" class="img-fluid rounded" alt="@Model.Title">
+        </div>
+        <div class="col-md-4">
+            <h1>@Model.Title</h1>
+            <p class="lead">@Model.Description</p>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Image Details</h5>
+                    <p class="card-text">
+                        <strong>Uploaded by:</strong> @(Model.UploadedBy?.DisplayName ?? "Unknown")<br>
+                        <strong>Date:</strong> @Model.UploadDate.ToString("MMMM dd, yyyy")<br>
+                        <strong>Tags:</strong>
+                        @foreach (var tag in Model.Tags)
+                        {
+                            <a asp-action="Tag" asp-route-tagName="@tag.Name" class="badge bg-secondary me-1">@tag.Name</a>
+                        }
+                    </p>
+                </div>
+            </div>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="d-flex gap-2 mb-3">
+                    <!-- Favorite Button -->
+                    <form asp-action="ToggleFavorite" asp-route-imageId="@Model.Id" method="post" class="flex-grow-1">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn @(ViewBag.IsFavorited ? "btn-danger" : "btn-outline-secondary") w-100">
+                            <i class="bi @(ViewBag.IsFavorited ? "bi-heart-fill" : "bi-heart")"></i>
+                            @(ViewBag.IsFavorited ? "Remove Favorite" : "Add Favorite")
+                        </button>
+                    </form>
+
+                    <!-- Voting Controls -->
+                    <form asp-action="SubmitVote" asp-route-imageId="@Model.Id" asp-route-isUpvote="true" method="post">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn @(ViewBag.UserVote == true ? "btn-success" : "btn-outline-secondary")">
+                            <i class="bi bi-arrow-up"></i>
+                        </button>
+                    </form>
+
+                    <span class="px-2 align-self-center fw-bold">@ViewBag.Score</span>
+
+                    <form asp-action="SubmitVote" asp-route-imageId="@Model.Id" asp-route-isUpvote="false" method="post">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn @(ViewBag.UserVote == false ? "btn-danger" : "btn-outline-secondary")">
+                            <i class="bi bi-arrow-down"></i>
+                        </button>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // AJAX form handling for favorites and votes
+            $('form').submit(function(e) {
+                e.preventDefault();
+                var form = $(this);
+
+                $.ajax({
+                    url: form.attr('action'),
+                    type: 'POST',
+                    data: form.serialize(),
+                    success: function(data) {
+                        if (form.attr('action').includes('ToggleFavorite')) {
+                            // Update favorite button
+                            var btn = form.find('button');
+                            btn.toggleClass('btn-danger btn-outline-secondary');
+                            btn.find('i').toggleClass('bi-heart-fill bi-heart');
+                            btn.text(btn.hasClass('btn-danger') ? ' Remove Favorite' : ' Add Favorite');
+                        } else if (form.attr('action').includes('SubmitVote')) {
+                            // Reload page to update vote display
+                            location.reload();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

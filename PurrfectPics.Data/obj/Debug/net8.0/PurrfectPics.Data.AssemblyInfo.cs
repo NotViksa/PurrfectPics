@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PurrfectPics.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc9bf89d59732bc272207de5f5d1121dcaee7573")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc0feafcbe7e6b836298bca7e9a08b5ac9370c81")]
 [assembly: System.Reflection.AssemblyProductAttribute("PurrfectPics.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PurrfectPics.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
