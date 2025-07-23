@@ -29,3 +29,57 @@ body {
     min-width: 20px;
     text-align: center;
 }
+
+.browse-container {
+    padding: 2rem 0;
+}
+
+.cat-card {
+    height: 100%;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+    .cat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+.cat-image {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    flex-grow: 1;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.tags-container {
+    margin-top: auto;
+}
+
+.tag-badge {
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
+    font-weight: normal;
+}
+
+.upload-info {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+}

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<PurrfectPics.Data.Models.CatImage>
+
+@{
+    ViewData["Title"] = "Browse Cat Pictures";
+}
+
+<div class="container mt-4">
+    <h1>Browse Cat Pictures</h1>
+
+    <div class="row mt-4">
+        @foreach (var image in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <a asp-action="Details" asp-route-id="@image.Id">
+                        <img src="@image.ImageUrl" class="card-img-top" alt="@image.Title">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">@image.Title</h5>
+                        <p class="card-text">@(image.Description?.Length > 100 ? image.Description.Substring(0, 100) + "..." : image.Description)</p>
+                        <div class="d-flex justify-content-between">
+                            <small class="text-muted">@image.UploadDate.ToString("MMMM dd, yyyy")</small>
+                            <div>
+                                @foreach (var tag in image.Tags.Take(3))
+                                {
+                                    <span class="badge bg-secondary me-1">@tag.Name</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

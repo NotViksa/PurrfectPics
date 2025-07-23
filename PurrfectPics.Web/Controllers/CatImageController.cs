@@ -226,5 +226,11 @@ namespace PurrfectPics.Web.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public async Task<IActionResult> Index()
+        {
+            var images = await _catImageService.GetRecentImagesAsync(20);
+            return View(images);
+        }
     }
 }
