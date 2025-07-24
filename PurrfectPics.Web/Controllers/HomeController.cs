@@ -32,16 +32,16 @@ namespace PurrfectPics.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            if (User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Dashboard");
+                return RedirectToAction("About", "Home");
             }
 
             var recentImages = await _catImageService.GetRecentImagesAsync(12);
             var popularTags = await _tagService.GetPopularTagsAsync(10);
 
             ViewBag.PopularTags = popularTags;
-            return View(recentImages);
+            return RedirectToAction("Dashboard");
         }
 
         public IActionResult About()
