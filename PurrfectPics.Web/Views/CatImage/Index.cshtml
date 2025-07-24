@@ -5,31 +5,92 @@
 }
 
 <div class="container mt-4">
-    <h1>Browse Cat Pictures</h1>
+    <!-- Add the search form right below the title -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1>Browse Cat Pictures</h1>
+        </div>
+        <div class="col-md-4">
+            <form asp-action="Search" method="get" class="input-group">
+                <input type="text" name="query" class="form-control"
+                       placeholder="Search by title or tags..."
+                       value="@ViewBag.SearchQuery">
+                <button class="btn btn-primary" type="submit">
+                    <i class="bi bi-search"></i> Search
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add search results header if there's a search query -->
+    @if (ViewBag.SearchQuery != null)
+    {
+        <div class="alert alert-info mb-4">
+            Showing results for: <strong>"@ViewBag.SearchQuery"</strong>
+            <a asp-action="Index" class="float-end">Clear search</a>
+        </div>
+    }
 
     <div class="row mt-4">
-        @foreach (var image in Model)
+        @if (!Model.Any())
         {
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <a asp-action="Details" asp-route-id="@image.Id">
-                        <img src="@image.ImageUrl" class="card-img-top" alt="@image.Title">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">@image.Title</h5>
-                        <p class="card-text">@(image.Description?.Length > 100 ? image.Description.Substring(0, 100) + "..." : image.Description)</p>
-                        <div class="d-flex justify-content-between">
-                            <small class="text-muted">@image.UploadDate.ToString("MMMM dd, yyyy")</small>
-                            <div>
-                                @foreach (var tag in image.Tags.Take(3))
+            <div class="col-12">
+                <div class="alert alert-warning">
+                    No images found. Try a different search term.
+                </div>
+            </div>
+        }
+        else
+        {
+            @foreach (var image in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a asp-action="Details" asp-route-id="@image.Id">
+                            <img src="@image.ImageUrl" class="card-img-top" alt="@image.Title">
+                        </a>
+                        <div class="card-body">
+                            <!-- Highlight search terms in title -->
+                            <h5 class="card-title">
+                                @if (ViewBag.SearchQuery != null)
                                 {
-                                    <span class="badge bg-secondary me-1">@tag.Name</span>
+                                    @Html.Raw(image.Title.Replace(ViewBag.SearchQuery.ToString(),
+                                    $"<span class='search-highlight'>{ViewBag.SearchQuery}</span>",
+                                                StringComparison.OrdinalIgnoreCase))
+                                                }
+                                else
+                                {
+                                    @image.Title
                                 }
+                            </h5>
+                            <!-- Truncated description -->
+                            <p class="card-text">@(image.Description?.Length > 100 ? image.Description.Substring(0, 100) + "..." : image.Description)</p>
+                            <div class="d-flex justify-content-between">
+                                <small class="text-muted">@image.UploadDate.ToString("MMMM dd, yyyy")</small>
+                                <div>
+                                    @foreach (var tag in image.Tags.Take(3))
+                                    {
+                                        <!-- Highlight search terms in tags -->
+                                        <span class="badge bg-secondary me-1">
+                                            @if (ViewBag.SearchQuery != null && tag.Name.Contains(ViewBag.SearchQuery.ToString(), StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                @Html.Raw(tag.Name.Replace(ViewBag.SearchQuery.ToString(),
+                                                $"<span class='search-highlight'>{ViewBag.SearchQuery}</span>",
+                                                                StringComparison.OrdinalIgnoreCase))
+                                                                }
+                                            else
+                                            {
+                                                @tag.Name
+                                            }
+                                        </span>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         }
     </div>
 </div>
+

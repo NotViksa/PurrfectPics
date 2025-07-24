@@ -1,9 +1,18 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using PurrfectPics.Data.Models.Identity
+@{
     ViewData["Title"] = "Dashboard";
 }
 
+@inject UserManager<ApplicationUser> UserManager
+
 <div class="container mt-4">
-    <h1>Welcome back, @User.Identity.Name!</h1>
+    @{
+        var user = await UserManager.GetUserAsync(User);
+        var displayName = user?.DisplayName ?? User.Identity?.Name;
+    }
+
+    <h1>Welcome back, @displayName!</h1>
 
     <div class="row mt-4">
         <div class="col-md-4">

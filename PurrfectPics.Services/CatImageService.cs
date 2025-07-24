@@ -98,5 +98,12 @@ namespace PurrfectPics.Services
         {
             return await _catImageRepository.CountAsync(ci => ci.UploadedById == userId);
         }
+        public async Task<IEnumerable<CatImage>> SearchImagesAsync(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+                return await GetRecentImagesAsync(20);
+
+            return await _catImageRepository.SearchAsync(searchTerm);
+        }
     }
 }

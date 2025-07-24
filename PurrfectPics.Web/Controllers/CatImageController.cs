@@ -232,5 +232,13 @@ namespace PurrfectPics.Web.Controllers
             var images = await _catImageService.GetRecentImagesAsync(20);
             return View(images);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Search(string query)
+        {
+            var results = await _catImageService.SearchImagesAsync(query);
+            ViewBag.SearchQuery = query;
+            return View("Index", results);
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace PurrfectPics.Data.Interfaces
         Task<IEnumerable<CatImage>> GetRecentAsync(int count);
         Task<CatImage?> GetByIdWithDetailsAsync(int id);
         Task<int> CountAsync(Expression<Func<CatImage, bool>> predicate);
+        Task<IEnumerable<CatImage>> SearchAsync(string searchTerm);
     }
 }

@@ -94,3 +94,8 @@ body {
     margin-bottom: 1rem;
 
 }
+
+.search-highlight {
+    background-color: yellow;
+    font-weight: bold;
+}

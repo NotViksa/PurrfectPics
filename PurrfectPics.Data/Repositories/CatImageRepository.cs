@@ -56,5 +56,17 @@ namespace PurrfectPics.Data.Repositories
         {
             return await _context.CatImages.CountAsync(predicate);
         }
+        public async Task<IEnumerable<CatImage>> SearchAsync(string searchTerm)
+        {
+            return await _context.CatImages
+                .Include(ci => ci.Tags)
+                .Include(ci => ci.UploadedBy)
+                .Where(ci =>
+                    ci.Title.Contains(searchTerm) ||
+                    ci.Description.Contains(searchTerm) ||
+                    ci.Tags.Any(t => t.Name.Contains(searchTerm))
+                )
+                .ToListAsync();
+        }
     }
 }
