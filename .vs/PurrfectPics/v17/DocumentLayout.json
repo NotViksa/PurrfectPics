@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|solutionrelative:purrfectpics.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|solutionrelative:purrfectpics.web\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|solutionrelative:purrfectpics.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|solutionrelative:purrfectpics.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\views\\catimage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -130,7 +130,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 25,
+          "SelectedChildIndex": 24,
           "Children": [
             {
               "$type": "Document",
@@ -155,7 +155,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Views\\Home\\Privacy.cshtml",
@@ -163,8 +163,7 @@
               "RelativeToolTip": "PurrfectPics.Web\\Views\\Home\\Privacy.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-24T15:57:05.418Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-24T15:57:05.418Z"
             },
             {
               "$type": "Document",
@@ -264,7 +263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Controllers\\HomeController.cs",
@@ -272,8 +271,7 @@
               "RelativeToolTip": "PurrfectPics.Web\\Controllers\\HomeController.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAYwDkAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T18:02:50.926Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-23T18:02:50.926Z"
             },
             {
               "$type": "Document",
@@ -409,26 +407,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "PurrfectPics.Web\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAB4AAAAAAAAAAAArwDwAAABLAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAABkAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-21T18:06:28.949Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\wwwroot\\css\\site.css",
               "ToolTip": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\wwwroot\\css\\site.css",
               "RelativeToolTip": "PurrfectPics.Web\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAADQAAAAAAAAAAAAQwFsAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAtwCAAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-07-21T18:06:04.911Z",
               "EditorCaption": ""
