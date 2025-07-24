@@ -57,5 +57,24 @@ namespace PurrfectPics.Data.Repositories
             var entity = await GetByIdAsync(id);
             return entity != null;
         }
+        public async Task<IEnumerable<T>> FindAsync(
+    Expression<Func<T, bool>> predicate,
+    Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+    int? take = null)
+        {
+            IQueryable<T> query = _dbSet.Where(predicate);
+
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+
+            if (take.HasValue)
+            {
+                query = query.Take(take.Value);
+            }
+
+            return await query.ToListAsync();
+        }
     }
 }

@@ -57,5 +57,14 @@ namespace PurrfectPics.Services
         {
             return await _context.Favorites.CountAsync(f => f.UserId == userId);
         }
+        public async Task<IEnumerable<Favorite>> GetRecentFavoritesAsync(string userId, int count)
+        {
+            return await _context.Favorites
+                .Include(f => f.CatImage)
+                .Where(f => f.UserId == userId)
+                .OrderByDescending(f => f.FavoritedDate)
+                .Take(count)
+                .ToListAsync();
+        }
     }
 }

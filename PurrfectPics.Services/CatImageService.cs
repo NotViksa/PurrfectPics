@@ -2,6 +2,7 @@
 using PurrfectPics.Data.Interfaces;
 using PurrfectPics.Data.Models;
 using PurrfectPics.Services.Interfaces;
+using System.Linq.Expressions;
 
 namespace PurrfectPics.Services
 {
@@ -94,16 +95,27 @@ namespace PurrfectPics.Services
                 return false;
             }
         }
+
         public async Task<int> GetImageCountByUserAsync(string userId)
         {
             return await _catImageRepository.CountAsync(ci => ci.UploadedById == userId);
         }
+
         public async Task<IEnumerable<CatImage>> SearchImagesAsync(string searchTerm)
         {
             if (string.IsNullOrWhiteSpace(searchTerm))
                 return await GetRecentImagesAsync(20);
 
             return await _catImageRepository.SearchAsync(searchTerm);
+        }
+
+        public async Task<IEnumerable<CatImage>> GetRecentUserImagesAsync(string userId, int count)
+        {
+            return await _catImageRepository.FindAsync(
+                ci => ci.UploadedById == userId,
+                orderBy: q => q.OrderByDescending(ci => ci.UploadDate),
+                take: count
+            );
         }
     }
 }

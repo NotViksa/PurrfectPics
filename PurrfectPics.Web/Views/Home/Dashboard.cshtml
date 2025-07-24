@@ -30,7 +30,63 @@
 
         <div class="col-md-8">
             <h3>Recent Activity</h3>
-            <!-- Add recent activity feed here -->
+
+            <!-- Recent Uploads -->
+            <div class="card mb-3">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Your Recent Uploads</h5>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.RecentUploads.Count > 0)
+                    {
+                        <div class="row">
+                            @foreach (var image in ViewBag.RecentUploads)
+                            {
+                                <div class="col-md-4 mb-2">
+                                    <a asp-controller="CatImage" asp-action="Details" asp-route-id="@image.Id">
+                                        <img src="@image.ImageUrl" class="img-thumbnail" style="height: 100px; width: 100%; object-fit: cover;" alt="@image.Title">
+                                    </a>
+                                    <small class="d-block text-truncate">@image.Title</small>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">You haven't uploaded any images yet.</p>
+                        <a asp-controller="CatImage" asp-action="Add" class="btn btn-sm btn-primary">Upload Your First Image</a>
+                    }
+                </div>
+            </div>
+
+            <!-- Recent Favorites -->
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">Your Recent Favorites</h5>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.RecentFavorites.Count > 0)
+                    {
+                        <div class="row">
+                            @foreach (var favorite in ViewBag.RecentFavorites)
+                            {
+                                <div class="col-md-4 mb-2">
+                                    <a asp-controller="CatImage" asp-action="Details" asp-route-id="@favorite.CatImage.Id">
+                                        <img src="@favorite.CatImage.ImageUrl" class="img-thumbnail" style="height: 100px; width: 100%; object-fit: cover;" alt="@favorite.CatImage.Title">
+                                    </a>
+                                    <small class="d-block text-truncate">@favorite.CatImage.Title</small>
+                                    <small class="text-muted">Favorited on @favorite.FavoritedDate.ToString("MMM dd")</small>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">You haven't favorited any images yet.</p>
+                        <a asp-controller="CatImage" asp-action="Index" class="btn btn-sm btn-primary">Browse Images</a>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>

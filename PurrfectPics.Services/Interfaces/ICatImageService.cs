@@ -17,5 +17,6 @@ namespace PurrfectPics.Services.Interfaces
         Task<bool> DeleteImageAsync(int id);
         Task<int> GetImageCountByUserAsync(string userId);
         Task<IEnumerable<CatImage>> SearchImagesAsync(string searchTerm);
+        Task<IEnumerable<CatImage>> GetRecentUserImagesAsync(string userId, int count);
     }
 }
