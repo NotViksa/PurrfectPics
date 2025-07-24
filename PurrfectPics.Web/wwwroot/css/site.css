@@ -83,3 +83,14 @@ body {
     color: #6c757d;
     margin-top: 0.5rem;
 }
+
+.privacy-section {
+    margin-bottom: 2rem;
+}
+
+.privacy-section h3 {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+
+}

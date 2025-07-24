@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|solutionrelative:purrfectpics.web\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|solutionrelative:purrfectpics.web\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|solutionrelative:purrfectpics.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|solutionrelative:purrfectpics.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\views\\catimage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|solutionrelative:purrfectpics.web\\views\\catimage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|solutionrelative:purrfectpics.web\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\controllers\\catimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|solutionrelative:purrfectpics.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.web\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{1FA38B46-FE9F-4BF8-8F44-5D0C7C9FD9F5}|PurrfectPics.Web\\PurrfectPics.Web.csproj|solutionrelative:purrfectpics.web\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C05E354A-CDA7-48D9-8B9F-C88C18C598E5}|PurrfectPics.Services\\PurrfectPics.Services.csproj|c:\\users\\viki1\\desktop\\purrfectpics_main\\purrfectpics.services\\interfaces\\ifavoriteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -126,11 +130,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 23,
+          "SelectedChildIndex": 25,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "ICatImageService.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\Interfaces\\ICatImageService.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Services\\Interfaces\\ICatImageService.cs",
@@ -152,6 +156,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "PurrfectPics.Web\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "PurrfectPics.Web\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-24T15:57:05.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\CatImage\\Index.cshtml",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Views\\CatImage\\Index.cshtml",
@@ -159,12 +176,11 @@
               "RelativeToolTip": "PurrfectPics.Web\\Views\\CatImage\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-23T18:30:46.084Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-23T18:30:46.084Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "IFavoriteService.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\Interfaces\\IFavoriteService.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Services\\Interfaces\\IFavoriteService.cs",
@@ -176,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "ICommentService.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\Interfaces\\ICommentService.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Services\\Interfaces\\ICommentService.cs",
@@ -188,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "FavoriteService.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\FavoriteService.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Services\\FavoriteService.cs",
@@ -200,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "CommentService.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\CommentService.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Services\\CommentService.cs",
@@ -212,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Comment.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\Models\\Comment.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Data\\Models\\Comment.cs",
@@ -224,7 +240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Dashboard.cshtml",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\Home\\Dashboard.cshtml",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Views\\Home\\Dashboard.cshtml",
@@ -236,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "jquery.js",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\wwwroot\\lib\\jquery\\dist\\jquery.js",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\wwwroot\\lib\\jquery\\dist\\jquery.js",
@@ -254,14 +270,14 @@
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Controllers\\HomeController.cs",
               "RelativeToolTip": "PurrfectPics.Web\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAIwCEAAABPAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAYwDkAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-23T18:02:50.926Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "About.cshtml",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\Home\\About.cshtml",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Views\\Home\\About.cshtml",
@@ -273,7 +289,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "CatImageRepository.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\Repositories\\CatImageRepository.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Data\\Repositories\\CatImageRepository.cs",
@@ -285,7 +301,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ICatImageRepository.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\Interfaces\\ICatImageRepository.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Data\\Interfaces\\ICatImageRepository.cs",
@@ -297,7 +313,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Repository.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\Repositories\\Repository.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Data\\Repositories\\Repository.cs",
@@ -309,7 +325,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "CatImageService.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\CatImageService.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Services\\CatImageService.cs",
@@ -317,12 +333,11 @@
               "RelativeToolTip": "PurrfectPics.Services\\CatImageService.cs",
               "ViewState": "AgIAAEoAAAAAAAAAAAAqwGMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-23T07:35:53.392Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-23T07:35:53.392Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "CatImageUploadViewModel.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Models\\CatImageUploadViewModel.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Models\\CatImageUploadViewModel.cs",
@@ -334,7 +349,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
@@ -346,7 +361,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
@@ -358,7 +373,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\CatImage\\Details.cshtml",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Views\\CatImage\\Details.cshtml",
@@ -370,7 +385,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "CatImageDetailsViewModel.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Models\\CatImageDetailsViewModel.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Models\\CatImageDetailsViewModel.cs",
@@ -382,7 +397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Upload.cshtml",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\CatImage\\Upload.cshtml",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Views\\CatImage\\Upload.cshtml",
@@ -390,38 +405,37 @@
               "RelativeToolTip": "PurrfectPics.Web\\Views\\CatImage\\Upload.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-23T06:31:58.469Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-23T06:31:58.469Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\Shared\\_Layout.cshtml*",
-              "RelativeToolTip": "PurrfectPics.Web\\Views\\Shared\\_Layout.cshtml*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABSAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "PurrfectPics.Web\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAArwDwAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-21T18:06:28.949Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\wwwroot\\css\\site.css",
               "ToolTip": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\wwwroot\\css\\site.css",
               "RelativeToolTip": "PurrfectPics.Web\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAQwFsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-07-21T18:06:04.911Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "_ImageCardPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Views\\Shared\\_ImageCardPartial.cshtml",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Views\\Shared\\_ImageCardPartial.cshtml",
@@ -433,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "CatImageController.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Controllers\\CatImageController.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Controllers\\CatImageController.cs",
@@ -441,12 +455,11 @@
               "RelativeToolTip": "PurrfectPics.Web\\Controllers\\CatImageController.cs",
               "ViewState": "AgIAAMkAAAAAAAAAAAAlwOIAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T18:02:04.552Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-21T18:02:04.552Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "VoteService.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\VoteService.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Services\\VoteService.cs",
@@ -458,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "IVoteService.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Services\\Interfaces\\IVoteService.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Services\\Interfaces\\IVoteService.cs",
@@ -470,7 +483,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Web\\Program.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Web\\Program.cs",
@@ -478,12 +491,11 @@
               "RelativeToolTip": "PurrfectPics.Web\\Program.cs",
               "ViewState": "AgIAAEUAAAAAAAAAAAAAAFsAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T17:55:29.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-21T17:55:29.84Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "Vote.cs",
               "DocumentMoniker": "C:\\Users\\viki1\\Desktop\\purrfectpics_main\\PurrfectPics.Data\\Models\\Vote.cs",
               "RelativeDocumentMoniker": "PurrfectPics.Data\\Models\\Vote.cs",
