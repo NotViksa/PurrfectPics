@@ -3,21 +3,53 @@ using PurrfectPics.Data;
 using PurrfectPics.Data.Models;
 using PurrfectPics.Services.Interfaces;
 
-namespace PurrfectPics.Services
+public class CommentService : ICommentService
 {
-    public class CommentService : ICommentService
+    private readonly ApplicationDbContext _context;
+
+    public CommentService(ApplicationDbContext context)
     {
-        private readonly ApplicationDbContext _context;
+        _context = context;
+    }
 
-        public CommentService(ApplicationDbContext context)
+    public async Task<Comment> AddCommentAsync(string content, int catImageId, string userId)
+    {
+        var comment = new Comment
         {
-            _context = context;
-        }
+            Content = content,
+            CatImageId = catImageId,
+            PostedById = userId,
+            PostedDate = DateTime.UtcNow
+        };
 
-        public async Task<int> GetCommentCountByUserAsync(string userId)
-        {
-            return await _context.Comments
-                .CountAsync(c => c.PostedById == userId);
-        }
+        await _context.Comments.AddAsync(comment);
+        await _context.SaveChangesAsync();
+        return comment;
+    }
+
+    public async Task<IEnumerable<Comment>> GetCommentsForImageAsync(int catImageId)
+    {
+        return await _context.Comments
+            .Include(c => c.PostedBy)
+            .Where(c => c.CatImageId == catImageId)
+            .OrderByDescending(c => c.PostedDate)
+            .ToListAsync();
+    }
+
+    public async Task<bool> DeleteCommentAsync(int commentId, string userId)
+    {
+        var comment = await _context.Comments
+            .FirstOrDefaultAsync(c => c.Id == commentId && c.PostedById == userId);
+
+        if (comment == null) return false;
+
+        _context.Comments.Remove(comment);
+        await _context.SaveChangesAsync();
+        return true;
+    }
+    public async Task<int> GetCommentCountByUserAsync(string userId)
+    {
+        return await _context.Comments
+            .CountAsync(c => c.PostedById == userId);
     }
 }

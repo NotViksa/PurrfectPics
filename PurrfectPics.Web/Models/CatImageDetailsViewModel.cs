@@ -8,5 +8,7 @@ namespace PurrfectPics.Web.Models
         public bool IsFavorited { get; set; }
         public bool? UserVote { get; set; } // true=upvote, false=downvote, null=no vote
         public int Score { get; set; }
+        public CatImage CatImage { get; set; }
+        public IEnumerable<Comment> Comments { get; set; }
     }
 }

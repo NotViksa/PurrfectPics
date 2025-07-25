@@ -17,6 +17,7 @@ namespace PurrfectPics.Web.Controllers
         private readonly IVoteService _voteService;
         private readonly IWebHostEnvironment _environment;
         private readonly ILogger<CatImageController> _logger;
+        private readonly ICommentService _commentService;
 
         public CatImageController(
             ICatImageService catImageService,
@@ -24,7 +25,8 @@ namespace PurrfectPics.Web.Controllers
             IFavoriteService favoriteService,
             IVoteService voteService,
             IWebHostEnvironment environment,
-            ILogger<CatImageController> logger)
+            ILogger<CatImageController> logger,
+            ICommentService commentService)
         {
             _catImageService = catImageService;
             _tagService = tagService;
@@ -32,6 +34,7 @@ namespace PurrfectPics.Web.Controllers
             _voteService = voteService;
             _environment = environment;
             _logger = logger;
+            _commentService = commentService;
         }
 
         [HttpGet]
@@ -42,6 +45,14 @@ namespace PurrfectPics.Web.Controllers
             {
                 return NotFound();
             }
+
+            var comments = await _commentService.GetCommentsForImageAsync(id);
+
+            var viewModel = new CatImageDetailsViewModel
+            {
+                CatImage = image,
+                Comments = comments
+            };
 
             if (User.Identity.IsAuthenticated)
             {
