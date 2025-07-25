@@ -52,4 +52,15 @@ public class CommentService : ICommentService
         return await _context.Comments
             .CountAsync(c => c.PostedById == userId);
     }
+    public async Task<bool> EditCommentAsync(int commentId, string userId, string newContent)
+    {
+        var comment = await _context.Comments
+            .FirstOrDefaultAsync(c => c.Id == commentId && c.PostedById == userId);
+
+        if (comment == null) return false;
+
+        comment.Content = newContent;
+        await _context.SaveChangesAsync();
+        return true;
+    }
 }

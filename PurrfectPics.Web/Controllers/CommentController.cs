@@ -30,5 +30,16 @@ namespace PurrfectPics.Web.Controllers
             await _commentService.DeleteCommentAsync(commentId, userId);
             return RedirectToAction("Details", "CatImage", new { id = catImageId });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> EditComment(int commentId, int catImageId, string content)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var success = await _commentService.EditCommentAsync(commentId, userId, content);
+
+            if (!success) return NotFound();
+
+            return RedirectToAction("Details", "CatImage", new { id = catImageId });
+        }
     }
 }

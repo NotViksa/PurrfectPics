@@ -77,10 +77,10 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <form asp-controller="Comment" asp-action="AddComment" method="post">
+                    <form asp-controller="Comment" asp-action="AddComment" method="post" class="mb-4">
                         <input type="hidden" name="catImageId" value="@Model.Id" />
                         <div class="mb-3">
-                            <textarea name="content" class="form-control" rows="3" placeholder="Add a comment..."></textarea>
+                            <textarea name="content" class="form-control" rows="3" placeholder="Add a comment..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Post Comment</button>
                     </form>
@@ -89,23 +89,58 @@
                 <div class="mt-4">
                     @foreach (var comment in Model.Comments)
                     {
-                        <div class="card mb-3">
+                        <div class="card mb-3 comment-card">
                             <div class="card-body">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <strong>@comment.PostedBy?.DisplayName</strong>
-                                        <small class="text-muted ms-2">@comment.PostedDate.ToString("MMMM dd, yyyy")</small>
+                                <div class="d-flex">
+                                    <!-- Profile Picture -->
+                                    <div class="me-3">
+                                        <img src="@comment.PostedBy?.ProfileImageUrl"
+                                             class="rounded-circle"
+                                             style="width: 40px; height: 40px; object-fit: cover"
+                                             alt="@comment.PostedBy?.DisplayName">
                                     </div>
-                                    @if (User.Identity.IsAuthenticated && User.FindFirstValue(ClaimTypes.NameIdentifier) == comment.PostedById)
-                                    {
-                                        <form asp-controller="Comment" asp-action="DeleteComment" method="post">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <strong>@comment.PostedBy?.DisplayName</strong>
+                                                <small class="text-muted ms-2">@comment.PostedDate.ToString("MMMM dd, yyyy")</small>
+                                            </div>
+                                            @if (User.Identity.IsAuthenticated && User.FindFirstValue(ClaimTypes.NameIdentifier) == comment.PostedById)
+                                            {
+                                                <div>
+                                                    <!-- Edit Button -->
+                                                    <button class="btn btn-sm btn-outline-primary me-2 edit-comment-btn"
+                                                            data-comment-id="@comment.Id">
+                                                        Edit
+                                                    </button>
+                                                    <!-- Delete Button -->
+                                                    <form asp-controller="Comment" asp-action="DeleteComment" method="post" class="d-inline">
+                                                        <input type="hidden" name="commentId" value="@comment.Id" />
+                                                        <input type="hidden" name="catImageId" value="@Model.Id" />
+                                                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                                    </form>
+                                                </div>
+                                            }
+                                        </div>
+
+                                        <!-- Comment Content -->
+                                        <p class="mt-2 mb-0 comment-content" data-comment-id="@comment.Id">@comment.Content</p>
+
+                                        <!-- Edit Form (Hidden by default) -->
+                                        <form asp-controller="Comment" asp-action="EditComment" method="post"
+                                              class="edit-comment-form mt-2 d-none" data-comment-id="@comment.Id">
                                             <input type="hidden" name="commentId" value="@comment.Id" />
                                             <input type="hidden" name="catImageId" value="@Model.Id" />
-                                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                            <div class="mb-2">
+                                                <textarea name="content" class="form-control" rows="2" required>@comment.Content</textarea>
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary cancel-edit-btn">Cancel</button>
+                                            </div>
                                         </form>
-                                    }
+                                    </div>
                                 </div>
-                                <p class="mt-2">@comment.Content</p>
                             </div>
                         </div>
                     }
@@ -118,8 +153,8 @@
 @section Scripts {
     <script>
         $(document).ready(function() {
-            // Only handle favorite and vote forms with AJAX
-            $('form:not(#deleteForm)').submit(function(e) {
+            // Handle favorite and vote forms with AJAX
+            $('form:not(#deleteForm):not(.edit-comment-form)').submit(function(e) {
                 e.preventDefault();
                 var form = $(this);
 
@@ -134,16 +169,29 @@
                             btn.toggleClass('btn-danger btn-outline-secondary');
                             btn.find('i').toggleClass('bi-heart-fill bi-heart');
                             btn.text(btn.hasClass('btn-danger') ? ' Remove Favorite' : ' Add Favorite');
-                        } else if (form.attr('action').includes('SubmitVote')) {
-                            // Reload page to update vote display
-                            location.reload();
-                        } else if (form.attr('action').includes('AddComment') ||
+                        } else if (form.attr('action').includes('SubmitVote') ||
+                                  form.attr('action').includes('AddComment') ||
                                   form.attr('action').includes('DeleteComment')) {
-                            // Reload page to update comments
+                            // Reload page to update display
                             location.reload();
                         }
                     }
                 });
+            });
+
+            // Edit comment button click
+            $('.edit-comment-btn').click(function() {
+                const commentId = $(this).data('comment-id');
+                $(`.comment-content[data-comment-id="${commentId}"]`).addClass('d-none');
+                $(`.edit-comment-form[data-comment-id="${commentId}"]`).removeClass('d-none');
+            });
+
+            // Cancel edit button
+            $('.cancel-edit-btn').click(function() {
+                const form = $(this).closest('.edit-comment-form');
+                const commentId = form.data('comment-id');
+                form.addClass('d-none');
+                $(`.comment-content[data-comment-id="${commentId}"]`).removeClass('d-none');
             });
         });
     </script>
