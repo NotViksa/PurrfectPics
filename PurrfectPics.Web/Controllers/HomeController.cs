@@ -58,7 +58,7 @@ namespace PurrfectPics.Web.Controllers
             ViewBag.UserDisplayName = user?.DisplayName ?? User.Identity?.Name;
             ViewBag.UploadCount = await _catImageService.GetImageCountByUserAsync(userId);
             ViewBag.FavoriteCount = await _favoriteService.GetFavoriteCountByUserAsync(userId);
-            ViewBag.CommentCount = 0;
+            ViewBag.CommentCount = await _commentService.GetCommentCountByUserAsync(userId);
 
             // activity feed data
             ViewBag.RecentUploads = await _catImageService.GetRecentUserImagesAsync(userId, 3);
