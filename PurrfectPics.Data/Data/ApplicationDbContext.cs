@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PurrfectPics.Data.Models;
 using PurrfectPics.Data.Models.Identity;
@@ -62,6 +63,15 @@ namespace PurrfectPics.Data
                 .WithMany()
                 .HasForeignKey(v => v.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+
+            // Roles
+
+            builder.Entity<IdentityRole>().HasData(
+        new IdentityRole { Id = "1", Name = "User", NormalizedName = "USER" },
+        new IdentityRole { Id = "2", Name = "Administrator", NormalizedName = "ADMINISTRATOR" }
+    );
+
         }
     }
 }

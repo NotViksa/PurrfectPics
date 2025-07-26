@@ -7,7 +7,7 @@ namespace PurrfectPics.Services.Interfaces
         Task<int> GetCommentCountByUserAsync(string userId);
         Task<Comment> AddCommentAsync(string content, int catImageId, string userId);
         Task<IEnumerable<Comment>> GetCommentsForImageAsync(int catImageId);
-        Task<bool> DeleteCommentAsync(int commentId, string userId);
+        Task<bool> DeleteCommentAsync(int commentId, string userId, bool isAdmin);
         Task<bool> EditCommentAsync(int commentId, string? userId, string content);
     }
 }

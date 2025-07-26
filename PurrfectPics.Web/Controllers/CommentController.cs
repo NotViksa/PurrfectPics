@@ -24,10 +24,19 @@ namespace PurrfectPics.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> DeleteComment(int commentId, int catImageId)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            await _commentService.DeleteCommentAsync(commentId, userId);
+            var isAdmin = User.IsInRole("Administrator");
+
+            var success = await _commentService.DeleteCommentAsync(commentId, userId, isAdmin);
+
+            if (!success)
+            {
+                TempData["ErrorMessage"] = "You don't have permission to delete this comment";
+            }
+
             return RedirectToAction("Details", "CatImage", new { id = catImageId });
         }
 

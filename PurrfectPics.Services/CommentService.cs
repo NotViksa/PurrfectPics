@@ -36,16 +36,22 @@ public class CommentService : ICommentService
             .ToListAsync();
     }
 
-    public async Task<bool> DeleteCommentAsync(int commentId, string userId)
+    public async Task<bool> DeleteCommentAsync(int commentId, string userId, bool isAdmin = false)
     {
         var comment = await _context.Comments
-            .FirstOrDefaultAsync(c => c.Id == commentId && c.PostedById == userId);
+            .Include(c => c.PostedBy)
+            .FirstOrDefaultAsync(c => c.Id == commentId);
 
         if (comment == null) return false;
 
-        _context.Comments.Remove(comment);
-        await _context.SaveChangesAsync();
-        return true;
+        if (comment.PostedById == userId || isAdmin)
+        {
+            _context.Comments.Remove(comment);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        return false;
     }
     public async Task<int> GetCommentCountByUserAsync(string userId)
     {

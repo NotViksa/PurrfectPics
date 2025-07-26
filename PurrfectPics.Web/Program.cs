@@ -40,15 +40,23 @@ builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
-    // Configure other identity options here
     options.Password.RequireDigit = true;
     options.Password.RequireLowercase = true;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
     options.Password.RequiredLength = 6;
 })
+.AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+// Add authorization policies
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdministratorRole",
+        policy => policy.RequireRole("Administrator"));
+    options.AddPolicy("RequireUserRole",
+        policy => policy.RequireRole("User"));
+});
 
 builder.Services.AddControllersWithViews();
 
@@ -75,7 +83,6 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -86,6 +93,52 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Initialize roles and admin user
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+        var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+
+        // Create roles if they don't exist
+        string[] roleNames = { "Administrator", "User" };
+        foreach (var roleName in roleNames)
+        {
+            if (!await roleManager.RoleExistsAsync(roleName))
+            {
+                await roleManager.CreateAsync(new IdentityRole(roleName));
+            }
+        }
+
+        // Create admin user if it doesn't exist
+        var adminEmail = "admin@purrfectpics.com";
+        var adminUser = await userManager.FindByEmailAsync(adminEmail);
+        if (adminUser == null)
+        {
+            adminUser = new ApplicationUser
+            {
+                UserName = adminEmail,
+                Email = adminEmail,
+                DisplayName = "Admin",
+                RegistrationDate = DateTime.UtcNow
+            };
+
+            var result = await userManager.CreateAsync(adminUser, "AdminPassword123!");
+            if (result.Succeeded)
+            {
+                await userManager.AddToRoleAsync(adminUser, "Administrator");
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
 
 app.MapControllerRoute(
     name: "default",
