@@ -23,7 +23,7 @@
                         <strong>Tags:</strong>
                         @foreach (var tag in Model.Tags)
                         {
-                            <a asp-action="Tag" asp-route-tagName="@tag.Name" class="badge bg-secondary me-1">@tag.Name</a>
+                            <a asp-controller="CatImage" asp-action="Search" asp-route-query="@tag.Name" class="badge bg-secondary me-1">@tag.Name</a>
                         }
                     </p>
                 </div>
