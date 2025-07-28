@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PurrfectPics.Data.Models.Identity;
 using PurrfectPics.Services.Interfaces;
+using PurrfectPics.Web.Models;
+using System.Diagnostics;
 using System.Security.Claims;
 
 namespace PurrfectPics.Web.Controllers
@@ -69,6 +71,37 @@ namespace PurrfectPics.Web.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error(int? statusCode = null)
+        {
+            if (statusCode.HasValue)
+            {
+                return statusCode.Value switch
+                {
+                    404 => View("Error404"),
+                    500 => View("Error500"),
+                    _ => View("Error500") // default for other errors
+                };
+            }
+
+            // Handle exceptions that don't set a status code
+            return View("Error500");
+        }
+
+        [Route("/Home/Error404")]
+        public IActionResult Error404()
+        {
+            Response.StatusCode = 404;
+            return View();
+        }
+
+        [Route("/Home/Error500")]
+        public IActionResult Error500()
+        {
+            Response.StatusCode = 500;
             return View();
         }
     }

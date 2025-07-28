@@ -67,7 +67,7 @@ builder.Services.Configure<IISServerOptions>(options =>
 });
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
-{
+{   
     serverOptions.Limits.MaxRequestBodySize = 20 * 1024 * 1024; // 20MB
 });
 
@@ -75,19 +75,22 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}");
+app.UseExceptionHandler("/Home/Error");
+
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
 }
 else
 {
-    app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 
 app.UseRouting();
 
@@ -140,9 +143,18 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+app.MapFallbackToController("Error404", "Home");
+
+app.MapControllerRoute(
+    name: "errors",
+    pattern: "Home/Error{statusCode}",
+    defaults: new { controller = "Home", action = "Error" });
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.Run();
 app.MapRazorPages();
 
 app.Run();

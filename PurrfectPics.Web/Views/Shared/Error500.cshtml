@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Server Error";
+    Layout = "_Layout";
+}
+
+<div class="container text-center mt-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <img src="/images/confused-cat.png" alt="Confused cat" class="img-fluid mb-4" style="max-height: 300px;">
+            <h1 class="display-4 text-danger">500 - Oops!</h1>
+            <p class="lead">Our servers are having a cat nap. Please try again later.</p>
+            <div class="alert alert-warning mt-4">
+                <i class="bi bi-exclamation-triangle"></i>
+                We've been notified and our team of feline experts is on the case!
+            </div>
+            <div class="mt-4">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary me-2">
+                    <i class="bi bi-house-door"></i> Home
+                </a>
+                <button onclick="window.location.reload()" class="btn btn-outline-primary">
+                    <i class="bi bi-arrow-clockwise"></i> Try Again
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

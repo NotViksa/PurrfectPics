@@ -134,3 +134,25 @@ body {
 .edit-comment-form textarea {
     resize: none;
 }
+
+/* Error Page Styles */
+.error-cat {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.error-container {
+    background-color: #fff9f9;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
