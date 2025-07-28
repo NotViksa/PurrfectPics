@@ -91,7 +91,6 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-
 app.UseRouting();
 
 app.UseAuthentication();
@@ -143,7 +142,7 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-app.MapFallbackToController("Error404", "Home");
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "errors",
@@ -154,7 +153,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
-app.MapRazorPages();
+app.MapFallbackToController("Error404", "Home");
 
 app.Run();
