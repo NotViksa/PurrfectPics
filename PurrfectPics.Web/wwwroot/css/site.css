@@ -135,6 +135,66 @@ body {
     resize: none;
 }
 
+.btn-purple:hover {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+/* Card Hover Effect */
+.hover-scale {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .hover-scale:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+
+/* Text Clamping */
+.clamp-1-line {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.clamp-2-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Search Highlighting */
+.search-highlight {
+    background-color: #fff9c4;
+    font-weight: bold;
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+.search-highlight-badge {
+    background-color: #ffeb3b;
+    font-weight: bold;
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+/* Image Aspect Ratio */
+.object-fit-cover {
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Tag Cloud */
+.tag-cloud {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+
 /* Error Page Styles */
 .error-cat {
     animation: bounce 2s infinite;
