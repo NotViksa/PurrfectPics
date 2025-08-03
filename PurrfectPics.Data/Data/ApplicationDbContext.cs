@@ -13,11 +13,11 @@ namespace PurrfectPics.Data
         {
         }
 
-        public DbSet<CatImage> CatImages { get; set; }
-        public DbSet<Tag> Tags { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<Favorite> Favorites { get; set; }
-        public DbSet<Vote> Votes { get; set; }
+        public virtual DbSet<CatImage> CatImages { get; set; }
+        public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Favorite> Favorites { get; set; }
+        public virtual DbSet<Vote> Votes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

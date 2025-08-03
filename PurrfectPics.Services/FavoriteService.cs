@@ -1,28 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PurrfectPics.Data;
+﻿using PurrfectPics.Data.Interfaces;
 using PurrfectPics.Data.Models;
 using PurrfectPics.Services.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PurrfectPics.Services
 {
     public class FavoriteService : IFavoriteService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IFavoriteRepository _favoriteRepository;
 
-        public FavoriteService(ApplicationDbContext context)
+        public FavoriteService(IFavoriteRepository favoriteRepository)
         {
-            _context = context;
+            _favoriteRepository = favoriteRepository;
         }
 
         public async Task<bool> ToggleFavoriteAsync(string userId, int imageId)
         {
-            var existing = await _context.Favorites
-                .FirstOrDefaultAsync(f => f.UserId == userId && f.CatImageId == imageId);
+            var existing = await _favoriteRepository.GetFavoriteAsync(userId, imageId);
 
             if (existing != null)
             {
-                _context.Favorites.Remove(existing);
-                await _context.SaveChangesAsync();
+                await _favoriteRepository.RemoveFavoriteAsync(existing);
                 return false;
             }
 
@@ -30,41 +29,31 @@ namespace PurrfectPics.Services
             {
                 UserId = userId,
                 CatImageId = imageId,
-                FavoritedDate = DateTime.UtcNow
+                FavoritedDate = System.DateTime.UtcNow
             };
 
-            await _context.Favorites.AddAsync(favorite);
-            await _context.SaveChangesAsync();
+            await _favoriteRepository.AddFavoriteAsync(favorite);
             return true;
         }
 
         public async Task<bool> IsFavoritedAsync(string userId, int imageId)
         {
-            return await _context.Favorites
-                .AnyAsync(f => f.UserId == userId && f.CatImageId == imageId);
+            return await _favoriteRepository.FavoriteExistsAsync(userId, imageId);
         }
 
         public async Task<IEnumerable<CatImage>> GetUserFavoritesAsync(string userId)
         {
-            return await _context.Favorites
-                .Where(f => f.UserId == userId)
-                .Include(f => f.CatImage)
-                .ThenInclude(ci => ci.Tags)
-                .Select(f => f.CatImage)
-                .ToListAsync();
+            return await _favoriteRepository.GetUserFavoriteImagesAsync(userId);
         }
+
         public async Task<int> GetFavoriteCountByUserAsync(string userId)
         {
-            return await _context.Favorites.CountAsync(f => f.UserId == userId);
+            return await _favoriteRepository.GetFavoriteCountByUserAsync(userId);
         }
+
         public async Task<IEnumerable<Favorite>> GetRecentFavoritesAsync(string userId, int count)
         {
-            return await _context.Favorites
-                .Include(f => f.CatImage)
-                .Where(f => f.UserId == userId)
-                .OrderByDescending(f => f.FavoritedDate)
-                .Take(count)
-                .ToListAsync();
+            return await _favoriteRepository.GetRecentFavoritesAsync(userId, count);
         }
     }
 }

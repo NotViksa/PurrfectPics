@@ -28,6 +28,10 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 // Register repositories
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICatImageRepository, CatImageRepository>();
+builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+builder.Services.AddScoped<IVoteRepository, VoteRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ITagRepository, TagRepository>();
 
 // Register services
 builder.Services.AddScoped<ICatImageService, CatImageService>();
@@ -35,6 +39,7 @@ builder.Services.AddScoped<ITagService, TagService>();
 builder.Services.AddScoped<IFavoriteService, FavoriteService>();
 builder.Services.AddScoped<IVoteService, VoteService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
+
 
 // Configure Identity to use our custom ApplicationUser
 builder.Services.AddDefaultIdentity<ApplicationUser>(options =>

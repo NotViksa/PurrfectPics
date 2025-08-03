@@ -1,70 +1,61 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PurrfectPics.Data;
+﻿using PurrfectPics.Data.Interfaces;
 using PurrfectPics.Data.Models;
 using PurrfectPics.Services.Interfaces;
+using System;
+using System.Threading.Tasks;
 
 namespace PurrfectPics.Services
 {
     public class VoteService : IVoteService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IVoteRepository _voteRepository;
 
-        public VoteService(ApplicationDbContext context)
+        public VoteService(IVoteRepository voteRepository)
         {
-            _context = context;
+            _voteRepository = voteRepository;
         }
 
         public async Task<(bool Success, int Score)> SubmitVoteAsync(string userId, int imageId, bool isUpvote)
         {
-            var existingVote = await _context.Votes
-                .FirstOrDefaultAsync(v => v.UserId == userId && v.CatImageId == imageId);
+            var existingVote = await _voteRepository.GetVoteAsync(userId, imageId);
 
             if (existingVote != null)
             {
-                // User is changing their vote
                 if (existingVote.IsUpvote == isUpvote)
                 {
-                    // User is clicking the same vote button - remove vote
-                    _context.Votes.Remove(existingVote);
+                    await _voteRepository.RemoveVoteAsync(existingVote);
                 }
                 else
                 {
-                    // User is flipping their vote
                     existingVote.IsUpvote = isUpvote;
                     existingVote.VotedDate = DateTime.UtcNow;
+                    await _voteRepository.UpdateVoteAsync(existingVote);
                 }
             }
             else
             {
-                // New vote
                 var vote = new Vote
                 {
                     UserId = userId,
                     CatImageId = imageId,
-                    IsUpvote = isUpvote
+                    IsUpvote = isUpvote,
+                    VotedDate = DateTime.UtcNow
                 };
-                await _context.Votes.AddAsync(vote);
+                await _voteRepository.AddVoteAsync(vote);
             }
 
-            await _context.SaveChangesAsync();
-            var newScore = await GetImageScoreAsync(imageId);
+            var newScore = await _voteRepository.GetImageScoreAsync(imageId);
             return (true, newScore);
         }
 
         public async Task<int> GetImageScoreAsync(int imageId)
         {
-            var votes = await _context.Votes
-                .Where(v => v.CatImageId == imageId)
-                .ToListAsync();
-
-            return votes.Sum(v => v.IsUpvote ? 1 : -1);
+            return await _voteRepository.GetImageScoreAsync(imageId);
         }
 
         public async Task<bool?> GetUserVoteAsync(string userId, int imageId)
         {
-            var vote = await _context.Votes
-                .FirstOrDefaultAsync(v => v.UserId == userId && v.CatImageId == imageId);
-
+            var vote = await _voteRepository.GetVoteAsync(userId, imageId);
             return vote?.IsUpvote;
         }
     }
