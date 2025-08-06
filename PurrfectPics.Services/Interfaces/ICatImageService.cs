@@ -1,4 +1,5 @@
-﻿using PurrfectPics.Data.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PurrfectPics.Data.Models;
 
 namespace PurrfectPics.Services.Interfaces
 {
@@ -18,5 +19,8 @@ namespace PurrfectPics.Services.Interfaces
         Task<int> GetImageCountByUserAsync(string userId);
         Task<IEnumerable<CatImage>> SearchImagesAsync(string searchTerm);
         Task<IEnumerable<CatImage>> GetRecentUserImagesAsync(string userId, int count);
+        IQueryable<CatImage> GetImagesQueryable();
+        IQueryable<CatImage> GetSearchQueryable(string query);
+
     }
 }

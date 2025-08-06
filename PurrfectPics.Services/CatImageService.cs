@@ -46,7 +46,9 @@ namespace PurrfectPics.Services
 
         public async Task<IEnumerable<CatImage>> GetRecentImagesAsync(int count)
         {
-            return await _catImageRepository.GetRecentAsync(count);
+            return await GetImagesQueryable()
+                .Take(count)
+                .ToListAsync();
         }
 
         public async Task<CatImage> AddImageAsync(CatImage image, IEnumerable<string> tags)
@@ -83,15 +85,19 @@ namespace PurrfectPics.Services
         {
             try
             {
-                var image = await _catImageRepository.GetByIdAsync(id);
+                var image = await _catImageRepository.GetByIdWithDetailsAsync(id);
                 if (image == null) return false;
+
+                image.Comments.Clear();
+                image.Votes.Clear();
+                image.Favorites.Clear();
 
                 await _catImageRepository.DeleteAsync(id);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
-                // Log error here if needed
+                Console.WriteLine($"Error deleting image: {ex.Message}");
                 return false;
             }
         }
@@ -106,7 +112,8 @@ namespace PurrfectPics.Services
             if (string.IsNullOrWhiteSpace(searchTerm))
                 return await GetRecentImagesAsync(20);
 
-            return await _catImageRepository.SearchAsync(searchTerm);
+            return await GetSearchQueryable(searchTerm)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<CatImage>> GetRecentUserImagesAsync(string userId, int count)
@@ -117,5 +124,26 @@ namespace PurrfectPics.Services
                 take: count
             );
         }
+        public IQueryable<CatImage> GetImagesQueryable()
+        {
+            return _catImageRepository.GetQueryable()
+                .Include(c => c.Tags)
+                .OrderByDescending(c => c.UploadDate);
+        }
+
+        public IQueryable<CatImage> GetSearchQueryable(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+                return GetImagesQueryable();
+
+            query = query.ToLower();
+            return _catImageRepository.GetQueryable()
+                .Include(c => c.Tags)
+                .Where(c => c.Title.ToLower().Contains(query) ||
+                           c.Description.ToLower().Contains(query) ||
+                           c.Tags.Any(t => t.Name.ToLower().Contains(query)))
+                .OrderByDescending(c => c.UploadDate);
+        }
+
     }
 }

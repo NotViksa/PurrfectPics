@@ -1,5 +1,6 @@
 ﻿using PurrfectPics.Data.Interfaces;
 using PurrfectPics.Data.Models;
+using PurrfectPics.Data.Repositories;
 using PurrfectPics.Services.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,7 +10,6 @@ namespace PurrfectPics.Services
     public class TagService : ITagService
     {
         private readonly ITagRepository _tagRepository;
-
         public TagService(ITagRepository tagRepository)
         {
             _tagRepository = tagRepository;

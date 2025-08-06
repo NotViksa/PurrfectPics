@@ -32,7 +32,7 @@ namespace PurrfectPics.Data
                 .HasOne(c => c.CatImage)
                 .WithMany(ci => ci.Comments)
                 .HasForeignKey(c => c.CatImageId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Favorite>()
                 .HasOne(f => f.User)
@@ -44,19 +44,13 @@ namespace PurrfectPics.Data
                 .HasOne(v => v.CatImage)
                 .WithMany(ci => ci.Votes)
                 .HasForeignKey(v => v.CatImageId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.Entity<Comment>()
-                .HasOne(c => c.PostedBy)
-                .WithMany()
-                .HasForeignKey(c => c.PostedById)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Favorite>()
                 .HasOne(f => f.User)
                 .WithMany()
                 .HasForeignKey(f => f.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Vote>()
                 .HasOne(v => v.User)

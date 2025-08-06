@@ -238,18 +238,22 @@ namespace PurrfectPics.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? pageNumber)
         {
-            var images = await _catImageService.GetRecentImagesAsync(20);
-            return View(images);
+            const int pageSize = 8;
+            var images = _catImageService.GetImagesQueryable();
+            var paginatedImages = await PaginatedList<CatImage>.CreateAsync(images, pageNumber ?? 1, pageSize);
+            return View(paginatedImages);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Search(string query)
+        public async Task<IActionResult> Search(string query, int? pageNumber)
         {
-            var results = await _catImageService.SearchImagesAsync(query);
+            const int pageSize = 8;
+            var results = _catImageService.GetSearchQueryable(query);
             ViewBag.SearchQuery = query;
-            return View("Index", results);
+            var paginatedResults = await PaginatedList<CatImage>.CreateAsync(results, pageNumber ?? 1, pageSize);
+            return View("Index", paginatedResults);
         }
     }
 }

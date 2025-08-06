@@ -50,8 +50,12 @@ namespace PurrfectPics.Data.Repositories
             return await _context.CatImages
                 .Include(ci => ci.UploadedBy)
                 .Include(ci => ci.Tags)
+                .Include(ci => ci.Comments)
+                .Include(ci => ci.Votes)
+                .Include(ci => ci.Favorites)
                 .FirstOrDefaultAsync(ci => ci.Id == id);
         }
+
         public async Task<int> CountAsync(Expression<Func<CatImage, bool>> predicate)
         {
             return await _context.CatImages.CountAsync(predicate);
@@ -67,6 +71,10 @@ namespace PurrfectPics.Data.Repositories
                     ci.Tags.Any(t => t.Name.Contains(searchTerm))
                 )
                 .ToListAsync();
+        }
+        public IQueryable<CatImage> GetQueryable()
+        {
+            return _context.CatImages.AsQueryable();
         }
     }
 }

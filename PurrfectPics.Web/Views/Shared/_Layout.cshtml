@@ -3,45 +3,72 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PurrfectPics.Web</title>
+    <title>@ViewData["Title"] - PurrfectPics</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PurrfectPics.Web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PurrfectPics ≽^•⩊•^≼</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-color">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <i class="bi bi-camera-fill me-2"></i>PurrfectPics <span class="cat-face">≽^•⩊•^≼</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <!-- Left-aligned grouped navigation -->
+                    <ul class="navbar-nav me-auto">
+                        <!-- Home & Dashboard Group -->
+                        <li class="nav-item-group">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                <i class="bi bi-house-door me-1"></i>Home
+                            </a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <span class="nav-divider">|</span>
+                                <a class="nav-link" asp-controller="User" asp-action="Dashboard">
+                                    <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                                </a>
+                            }
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="CatImage" asp-action="Index">Browse</a>
+
+                        <!-- Browse & Upload Group -->
+                        <li class="nav-item-group">
+                            <span class="nav-group-spacer"></span>
+                            <a class="nav-link" asp-controller="CatImage" asp-action="Index">
+                                <i class="bi bi-images me-1"></i>Browse
+                            </a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <span class="nav-divider">|</span>
+                                <a class="nav-link" asp-controller="CatImage" asp-action="Upload">
+                                    <i class="bi bi-cloud-arrow-up me-1"></i>Upload
+                                </a>
+                            }
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="User" asp-action="Dashboard">My Dashboard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="CatImage" asp-action="Upload">Upload</a>
-                            </li>
-                        }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="About">About</a>
+
+                        <!-- About & Privacy Group -->
+                        <li class="nav-item-group">
+                            <span class="nav-group-spacer"></span>
+                            <a class="nav-link" asp-controller="Home" asp-action="About">
+                                <i class="bi bi-info-circle me-1"></i>About
+                            </a>
+                            <span class="nav-divider">|</span>
+                            <a class="nav-link" asp-controller="Home" asp-action="Privacy">
+                                <i class="bi bi-shield-lock me-1"></i>Privacy
+                            </a>
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
+
+                    <!-- Right-aligned login/logout -->
+                    <div class="navbar-right">
+                        <partial name="_LoginPartial" />
+                    </div>
                 </div>
             </div>
         </nav>

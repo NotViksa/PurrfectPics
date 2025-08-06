@@ -125,9 +125,17 @@ namespace PurrfectPics.Tests.Services
         public async Task DeleteImageAsync_ReturnsTrue_WhenImageExists()
         {
             // Arrange
-            var existingImage = new CatImage { Id = 1 };
-            _mockCatImageRepo.Setup(repo => repo.GetByIdAsync(1))
+            var existingImage = new CatImage
+            {
+                Id = 1,
+                Comments = new List<Comment>(),
+                Votes = new List<Vote>(),
+                Favorites = new List<Favorite>()
+            };
+
+            _mockCatImageRepo.Setup(repo => repo.GetByIdWithDetailsAsync(1))
                 .ReturnsAsync(existingImage);
+
             _mockCatImageRepo.Setup(repo => repo.DeleteAsync(1))
                 .Returns(Task.CompletedTask);
 
@@ -136,7 +144,65 @@ namespace PurrfectPics.Tests.Services
 
             // Assert
             Assert.True(result);
+            _mockCatImageRepo.Verify(repo => repo.GetByIdWithDetailsAsync(1), Times.Once);
             _mockCatImageRepo.Verify(repo => repo.DeleteAsync(1), Times.Once);
+        }
+
+        [Fact]
+        public async Task DeleteImageAsync_ClearsRelatedEntities_BeforeDeletion()
+        {
+            // Arrange
+            var existingImage = new CatImage
+            {
+                Id = 1,
+                Comments = new List<Comment> { new Comment() },
+                Votes = new List<Vote> { new Vote() },
+                Favorites = new List<Favorite> { new Favorite() }
+            };
+
+            _mockCatImageRepo.Setup(repo => repo.GetByIdWithDetailsAsync(1))
+                .ReturnsAsync(existingImage);
+
+            // Act
+            var result = await _catImageService.DeleteImageAsync(1);
+
+            // Assert
+            Assert.True(result);
+            Assert.Empty(existingImage.Comments);
+            Assert.Empty(existingImage.Votes);
+            Assert.Empty(existingImage.Favorites);
+        }
+
+        [Fact]
+        public async Task DeleteImageAsync_ReturnsFalse_WhenImageNotFound()
+        {
+            // Arrange
+            _mockCatImageRepo.Setup(repo => repo.GetByIdWithDetailsAsync(1))
+                .ReturnsAsync((CatImage)null);
+
+            // Act
+            var result = await _catImageService.DeleteImageAsync(1);
+
+            // Assert
+            Assert.False(result);
+            _mockCatImageRepo.Verify(repo => repo.DeleteAsync(It.IsAny<int>()), Times.Never);
+        }
+
+        [Fact]
+        public async Task DeleteImageAsync_ReturnsFalse_WhenRepositoryFails()
+        {
+            // Arrange
+            var existingImage = new CatImage { Id = 1 };
+            _mockCatImageRepo.Setup(repo => repo.GetByIdWithDetailsAsync(1))
+                .ReturnsAsync(existingImage);
+            _mockCatImageRepo.Setup(repo => repo.DeleteAsync(1))
+                .ThrowsAsync(new Exception());
+
+            // Act
+            var result = await _catImageService.DeleteImageAsync(1);
+
+            // Assert
+            Assert.False(result);
         }
 
         [Fact]

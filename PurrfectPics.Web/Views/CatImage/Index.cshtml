@@ -1,7 +1,9 @@
-﻿@model IEnumerable<PurrfectPics.Data.Models.CatImage>
+﻿@using PurrfectPics.Web.Controllers
+@model PaginatedList<PurrfectPics.Data.Models.CatImage>
 
 @{
     ViewData["Title"] = "Browse Cat Pictures";
+    var itemsPerPage = 8;
 }
 
 <div class="container mt-4">
@@ -120,4 +122,43 @@
             }
         }
     </div>
+
+    <!-- Pagination -->
+    @if (Model.Any())
+    {
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+        <nav aria-label="Page navigation" class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item @prevDisabled">
+                    <a asp-action="Index"
+                       asp-route-pageNumber="@(Model.PageIndex - 1)"
+                       asp-route-query="@ViewBag.SearchQuery"
+                       class="page-link bg-purple text-white border-purple">
+                        Previous
+                    </a>
+                </li>
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                        <a asp-action="Index"
+                           asp-route-pageNumber="@i"
+                           asp-route-query="@ViewBag.SearchQuery"
+                           class="page-link @(i == Model.PageIndex ? "bg-light-purple text-purple border-purple" : "text-purple")">
+                            @i
+                        </a>
+                    </li>
+                }
+                <li class="page-item @nextDisabled">
+                    <a asp-action="Index"
+                       asp-route-pageNumber="@(Model.PageIndex + 1)"
+                       asp-route-query="@ViewBag.SearchQuery"
+                       class="page-link bg-purple text-white border-purple">
+                        Next
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    }
 </div>

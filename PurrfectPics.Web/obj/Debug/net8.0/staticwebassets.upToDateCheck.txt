@@ -1,6 +1,7 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\confused-cat.png
+wwwroot\images\default-profile.png
 wwwroot\images\sad-cat.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
@@ -65,11 +66,19 @@ wwwroot\profile-images\03f336e3-f333-45f7-9001-a835638fcc41_637bcb3b-c8f4-4389-9
 wwwroot\profile-images\84c5534a-fd5b-4c43-bab1-50b6c8dc0222_ccdc1936-0bae-49bb-8502-43d6bdb61754.jpg
 wwwroot\profile-images\84c5534a-fd5b-4c43-bab1-50b6c8dc0222_fb49eadf-ef01-45ba-9fee-a279949759b7.jpg
 wwwroot\profile-images\b67676d0-8ca0-42e6-aaf2-82f8bff793a3_6057fd99-d215-4483-a40a-8535ef931747.jpg
+wwwroot\uploads\0569b655-f175-41e1-a69a-6981d298b2f2.png
 wwwroot\uploads\07dc7026-a4d2-4d37-8934-7d2fbc6dbd33.jpg
 wwwroot\uploads\0f155c55-97c5-4af7-8976-ae05b463c85c.jpg
 wwwroot\uploads\230e7585-3c65-48f3-9d85-a22aff04ff44.jpg
 wwwroot\uploads\3660000c-2c1b-49bc-8a98-8b8f99496835.jpg
+wwwroot\uploads\3fa467d5-ea50-421b-90cd-355b04f3d4b0.png
+wwwroot\uploads\434b85ae-0e1a-43b2-adb7-81bfec791752.png
+wwwroot\uploads\460b2d40-4a9d-4510-8cd8-7b3ea19e290b.png
+wwwroot\uploads\48bd6684-ac27-44a2-bbd5-6c326760d01f.png
+wwwroot\uploads\68a7b552-63a9-4a74-8cc0-c454629d54fd.png
 wwwroot\uploads\78d2970f-23e8-4a55-a1b9-55a3fa6b7eb7.jpg
+wwwroot\uploads\80ce12a5-a47a-42a5-9946-c6041a4f399c.png
+wwwroot\uploads\8631a08d-f7ae-4988-9ffb-2b59d00100a3.png
 wwwroot\uploads\8c72cb86-de36-4637-aefc-c8282c9d6d1c.jpg
 wwwroot\uploads\8d2de6e7-3247-46a7-9e7f-03f88e1f02a8.jpg
 wwwroot\uploads\98dc21fb-97b0-4c6a-94c2-6576aafd6268.jpg

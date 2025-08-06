@@ -6,85 +6,147 @@
 
 @inject UserManager<ApplicationUser> UserManager
 
-<div class="container mt-4">
+<div class="dashboard-container">
     @{
         var user = await UserManager.GetUserAsync(User);
         var displayName = user?.DisplayName ?? User.Identity?.Name;
+        var profileImage = user?.ProfileImageUrl ?? "/images/default-profile.png";
     }
 
-    <h1>Welcome back, @displayName!</h1>
-
-    <div class="row mt-4">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Your Stats</h5>
-                    <p class="card-text">
-                        Uploads: @ViewBag.UploadCount<br>
-                        Favorites: @ViewBag.FavoriteCount<br>
-                        Comments: @ViewBag.CommentCount
-                    </p>
-                </div>
+    <div class="dashboard-header">
+        <div class="profile-header">
+            <img src="@profileImage" class="profile-image" alt="Profile picture">
+            <div class="profile-info">
+                <h1>Welcome back, @displayName!</h1>
+                <p class="text-muted">Last active: @DateTime.Now.ToString("MMMM dd, yyyy")</p>
             </div>
         </div>
+    </div>
 
-        <div class="col-md-8">
-            <h3>Recent Activity</h3>
-
-            <!-- Recent Uploads -->
-            <div class="card mb-3">
-                <div class="card-header bg-light">
-                    <h5 class="mb-0">Your Recent Uploads</h5>
-                </div>
-                <div class="card-body">
-                    @if (ViewBag.RecentUploads.Count > 0)
-                    {
-                        <div class="row">
-                            @foreach (var image in ViewBag.RecentUploads)
-                            {
-                                <div class="col-md-4 mb-2">
-                                    <a asp-controller="CatImage" asp-action="Details" asp-route-id="@image.Id">
-                                        <img src="@image.ImageUrl" class="img-thumbnail" style="height: 100px; width: 100%; object-fit: cover;" alt="@image.Title">
-                                    </a>
-                                    <small class="d-block text-truncate">@image.Title</small>
-                                </div>
-                            }
+    <div class="dashboard-content">
+        <div class="row">
+            <!-- Left Column - Stats -->
+            <div class="col-lg-4">
+                <div class="stats-card card">
+                    <div class="card-header">
+                        <h3><i class="bi bi-bar-chart"></i> Your Stats</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="stat-item">
+                            <div class="stat-icon bg-primary">
+                                <i class="bi bi-cloud-arrow-up"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h5>@ViewBag.UploadCount</h5>
+                                <p>Uploads</p>
+                            </div>
                         </div>
-                    }
-                    else
-                    {
-                        <p class="text-muted">You haven't uploaded any images yet.</p>
-                        <a asp-controller="CatImage" asp-action="Upload" class="btn btn-sm btn-primary">Upload Your First Image</a>
-                    }
+
+                        <div class="stat-item">
+                            <div class="stat-icon bg-danger">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h5>@ViewBag.FavoriteCount</h5>
+                                <p>Favorites</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-icon bg-success">
+                                <i class="bi bi-chat-left-text"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h5>@ViewBag.CommentCount</h5>
+                                <p>Comments</p>
+                            </div>
+                        </div>
+
+                        <div class="quick-actions mt-4">
+                            <a asp-controller="User" asp-action="Dashboard" class="btn btn-primary btn-block">
+                                <i class="bi bi-pencil"></i>  To Dashboard
+                            </a>
+                            <a asp-controller="CatImage" asp-action="" class="btn btn-primary btn-block">
+                                <i class="bi bi-heart"></i>  Browse
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Recent Favorites -->
-            <div class="card">
-                <div class="card-header bg-light">
-                    <h5 class="mb-0">Your Recent Favorites</h5>
+            <!-- Right Column - Activity -->
+            <div class="col-lg-8">
+                <!-- Recent Uploads -->
+                <div class="activity-card card mb-4">
+                    <div class="card-header">
+                        <h3><i class="bi bi-images"></i> Recent Uploads</h3>
+                    </div>
+                    <div class="card-body">
+                        @if (ViewBag.RecentUploads.Count > 0)
+                        {
+                            <div class="image-grid">
+                                @foreach (var image in ViewBag.RecentUploads)
+                                {
+                                    <div class="image-item">
+                                        <a asp-controller="CatImage" asp-action="Details" asp-route-id="@image.Id">
+                                            <img src="@image.ImageUrl" class="img-fluid" alt="@image.Title">
+                                            <div class="image-overlay">
+                                                <span>@image.Title</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="empty-state">
+                                <i class="bi bi-images"></i>
+                                <h4>No uploads yet</h4>
+                                <p>Share your first cat picture with the community!</p>
+                                <a asp-controller="CatImage" asp-action="Upload" class="btn btn-primary">
+                                    <i class="bi bi-cloud-arrow-up"></i> Upload Image
+                                </a>
+                            </div>
+                        }
+                    </div>
                 </div>
-                <div class="card-body">
-                    @if (ViewBag.RecentFavorites.Count > 0)
-                    {
-                        <div class="row">
-                            @foreach (var favorite in ViewBag.RecentFavorites)
-                            {
-                                <div class="col-md-4 mb-2">
-                                    <a asp-controller="CatImage" asp-action="Details" asp-route-id="@favorite.CatImage.Id">
-                                        <img src="@favorite.CatImage.ImageUrl" class="img-thumbnail" style="height: 100px; width: 100%; object-fit: cover;" alt="@favorite.CatImage.Title">
-                                    </a>
-                                    <small class="d-block text-truncate">@favorite.CatImage.Title</small>
-                                    <small class="text-muted">Favorited on @favorite.FavoritedDate.ToString("MMM dd")</small>
-                                </div>
-                            }
-                        </div>
-                    }
-                    else
-                    {
-                        <p class="text-muted">You haven't favorited any images yet.</p>
-                        <a asp-controller="CatImage" asp-action="Index" class="btn btn-sm btn-primary">Browse Images</a>
-                    }
+
+                <!-- Recent Favorites -->
+                <div class="activity-card card">
+                    <div class="card-header">
+                        <h3><i class="bi bi-heart"></i> Recent Favorites</h3>
+                    </div>
+                    <div class="card-body">
+                        @if (ViewBag.RecentFavorites.Count > 0)
+                        {
+                            <div class="image-grid">
+                                @foreach (var favorite in ViewBag.RecentFavorites)
+                                {
+                                    <div class="image-item">
+                                        <a asp-controller="CatImage" asp-action="Details" asp-route-id="@favorite.CatImage.Id">
+                                            <img src="@favorite.CatImage.ImageUrl" class="img-fluid" alt="@favorite.CatImage.Title">
+                                            <div class="image-overlay">
+                                                <span>@favorite.CatImage.Title</span>
+                                                <small>Favorited @favorite.FavoritedDate.ToString("MMM dd")</small>
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="empty-state">
+                                <i class="bi bi-heart"></i>
+                                <h4>No favorites yet</h4>
+                                <p>Start exploring and favorite some cute cat pictures!</p>
+                                <a asp-controller="CatImage" asp-action="Index" class="btn btn-primary">
+                                    <i class="bi bi-search"></i> Browse Images
+                                </a>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

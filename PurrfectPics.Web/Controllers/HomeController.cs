@@ -83,7 +83,7 @@ namespace PurrfectPics.Web.Controllers
                 {
                     404 => View("Error404"),
                     500 => View("Error500"),
-                    _ => View("Error500") // default for other errors
+                    _ => View("Error500")
                 };
             }
 
@@ -91,14 +91,14 @@ namespace PurrfectPics.Web.Controllers
             return View("Error500");
         }
 
-        [Route("/Home/Error404")]
+        [Route("/Error404")]
         public IActionResult Error404()
         {
             Response.StatusCode = 404;
             return View();
         }
 
-        [Route("/Home/Error500")]
+        [Route("/Error500")]
         public IActionResult Error500()
         {
             Response.StatusCode = 500;
